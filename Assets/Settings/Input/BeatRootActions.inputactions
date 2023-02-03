@@ -1,0 +1,94 @@
+{
+    "name": "BeatRootActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "506c8c02-7de5-4a50-b019-e10e0f155af1",
+            "actions": [
+                {
+                    "name": "SelectInstrumentNorth",
+                    "type": "Button",
+                    "id": "858961dd-7aa5-4b87-a4cf-08d419696267",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectInstrumentSouth",
+                    "type": "Button",
+                    "id": "5764b230-4bc1-4873-b7cd-0f6eff00e283",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "858d0d12-d45d-4e0c-a71d-08d4c80efa64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StartPause",
+                    "type": "Button",
+                    "id": "64ecbbfd-7d92-46cb-94f5-d2ce89ca40ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0735863b-890e-44f4-a6e6-d09ff300bbc7",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectInstrumentNorth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d54287cb-c2b3-4f37-92e1-4ea45645ca33",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectInstrumentSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f8533b48-a397-479e-9d44-6cdca15e6847",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13b90b1c-8a05-4ca3-bfbc-2f1890dd99e3",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
