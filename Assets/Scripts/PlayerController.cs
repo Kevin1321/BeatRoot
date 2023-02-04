@@ -22,7 +22,10 @@ namespace BeatRoot
 
         private bool isInJumpField = false;
         private bool isInDashField = false;
-        private bool isGrounded = false;
+        private bool isGrounded = true;
+
+
+        private Vector2 velocity;
 
 
         private void OnEnable()
@@ -34,14 +37,14 @@ namespace BeatRoot
         private void Update()
         {
             if (!isAlive) return;
-
-            Vector2 velocity = transform.position;
-
-            velocity.x += Speed * Time.deltaTime;
+            
+            velocity = transform.position;
 
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
 
             if (!isGrounded) velocity.y += Gravity * Time.deltaTime;
+
+            velocity.x += Speed * Time.deltaTime;
 
             transform.position = velocity;
         }
@@ -70,7 +73,7 @@ namespace BeatRoot
             isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, GroundLayer);
             if (isGrounded)
             {
-
+                
             }
         }
 
