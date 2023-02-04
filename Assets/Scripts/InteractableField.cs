@@ -6,6 +6,8 @@ namespace BeatRoot
 {
     public class InteractableField : MonoBehaviour
     {
+        private bool hitOnSuccess;
+        
         public void Use()
         {
             GetComponent<Collider2D>().enabled = false;
@@ -14,11 +16,15 @@ namespace BeatRoot
 
         private void DestroyOnUse()
         {
+            hitOnSuccess = true;
             transform.DOScale(0.05f, 0.5f).SetEase(Ease.InBack).OnComplete(() => Destroy(gameObject));
         }
 
         private void Update()
         {
+            if(hitOnSuccess)
+                return;
+            
             if (PlayerController.Instance.GetXPosition() > transform.position.x + 0.5f)
             {
                 DestroyOnMiss();
