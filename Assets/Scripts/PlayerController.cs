@@ -75,7 +75,6 @@ namespace BeatRoot
             
             newPosition = transform.position;
 
-           
 
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
             
