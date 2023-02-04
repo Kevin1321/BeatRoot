@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2170116839288158838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.398, z: 0}
+  m_LocalPosition: {x: -0.14, y: 0.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,13 +72,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f6a2fdd627238c4985f96bb78561fdf, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 5afcdc6e1f265a14a922920b2a471845, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -186,9 +186,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jump: {fileID: 11400000, guid: 03bff19d76372914dafe849b1db71efe, type: 2}
   Dash: {fileID: 11400000, guid: c5a1e8c65f5ae3b45ac356ba5f19c1de, type: 2}
+  SR: {fileID: 2716326973850506423}
+  BaseSprite: {fileID: 21300000, guid: 5afcdc6e1f265a14a922920b2a471845, type: 3}
+  JumpSprite: {fileID: 21300000, guid: 2bfbad99bf53e694d883432932254558, type: 3}
+  DashSprite: {fileID: 21300000, guid: dcae34725a8000e4883a8734ac59a5f3, type: 3}
   JumpForce: 6
-  Speed: 1
-  Gravity: -2
+  Speed: 3
+  Gravity: -5
+  DashDuration: 0.1
+  DashDistance: 3
+  MusicPlayer: {fileID: 0}
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -876,7 +876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.398, z: -10}
+  m_LocalPosition: {x: -0.14, y: 0.39, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1612,7 +1612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050069950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.398, z: -10}
+  m_LocalPosition: {x: -0.14, y: 0.39, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3153,30 +3153,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2716326973850506423, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5693410968881452918, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
-      propertyPath: Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5693410968881452918, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
-      propertyPath: Gravity
-      value: -5
-      objectReference: {fileID: 0}
     - target: {fileID: 5693410968881452918, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
       propertyPath: MusicPlayer
       value: 
       objectReference: {fileID: 1967385611}
-    - target: {fileID: 5693410968881452918, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
-      propertyPath: DashDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5693410968881452918, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
-      propertyPath: DashDuration
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8396628705794059529, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
       propertyPath: m_Name
       value: Player
