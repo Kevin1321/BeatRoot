@@ -1,3 +1,5 @@
+using DG.Tweening;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 
@@ -11,21 +13,26 @@ namespace BeatRoot
    
         [SerializeField] private float JumpForce = 10;
         [SerializeField] private float Speed = 0;
-        [SerializeField] private float Gravity = -2;
+        [SerializeField] private float Gravity = -3;
+        [SerializeField] private float DashDuration;
+        [SerializeField] private float DashDistance;
 
-
+        
         public LayerMask GroundLayer;
         private float groundCheckRadius = 0.2f;
-        private float groundCheckDistance = 0.1f;
+        private float groundCheckDistance = 0.01f;
 
         public bool isAlive = true;
 
+        private float verticalSpeed;
         private bool isInJumpField = false;
         private bool isInDashField = false;
         private bool isGrounded = true;
+        private float dashSpeed;
+        private bool isDashing;
 
 
-        private Vector2 velocity;
+        private Vector2 newPosition;
 
 
         private void OnEnable()
@@ -38,15 +45,19 @@ namespace BeatRoot
         {
             if (!isAlive) return;
             
-            velocity = transform.position;
+            newPosition = transform.position;
 
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
-
-            if (!isGrounded) velocity.y += Gravity * Time.deltaTime;
-
-            velocity.x += Speed * Time.deltaTime;
-
-            transform.position = velocity;
+            
+            verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
+            
+            if (!isDashing)
+            {
+                newPosition.y += verticalSpeed * Time.deltaTime;
+                newPosition.x += dashSpeed > 0 ? dashSpeed : Speed * Time.deltaTime;
+                
+                transform.position = newPosition;
+            }
         }
 
         private void OnDisable()
@@ -69,11 +80,9 @@ namespace BeatRoot
 
         private void OnJumpPressed()
         {
-            if (!isInJumpField) return;
-            isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, GroundLayer);
-            if (isGrounded)
+            if (isInJumpField)
             {
-                
+                verticalSpeed += JumpForce;
             }
         }
 
@@ -81,6 +90,13 @@ namespace BeatRoot
         {
             if(!isInDashField) return;
 
+            isDashing = true;
+            transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InBack).OnComplete(SetIsDashingToFalse);
+        }
+
+        private void SetIsDashingToFalse()
+        {
+            isDashing = false;
         }
     }
 }
