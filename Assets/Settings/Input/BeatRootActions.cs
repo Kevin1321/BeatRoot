@@ -30,27 +30,18 @@ namespace PlayerActions
             ""id"": ""506c8c02-7de5-4a50-b019-e10e0f155af1"",
             ""actions"": [
                 {
-                    ""name"": ""SelectInstrumentNorth"",
-                    ""type"": ""Button"",
-                    ""id"": ""858961dd-7aa5-4b87-a4cf-08d419696267"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SelectInstrumentSouth"",
-                    ""type"": ""Button"",
-                    ""id"": ""5764b230-4bc1-4873-b7cd-0f6eff00e283"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""858d0d12-d45d-4e0c-a71d-08d4c80efa64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b7cb587-eb04-4009-a398-d9bb0f0ccc06"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,28 +58,6 @@ namespace PlayerActions
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""0735863b-890e-44f4-a6e6-d09ff300bbc7"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SelectInstrumentNorth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d54287cb-c2b3-4f37-92e1-4ea45645ca33"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SelectInstrumentSouth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""f8533b48-a397-479e-9d44-6cdca15e6847"",
@@ -110,6 +79,17 @@ namespace PlayerActions
                     ""action"": ""StartPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""801614a6-2dc6-4a5a-a38c-2a5843bd5ba4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -118,9 +98,8 @@ namespace PlayerActions
 }");
             // Player
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_SelectInstrumentNorth = m_Player.FindAction("SelectInstrumentNorth", throwIfNotFound: true);
-            m_Player_SelectInstrumentSouth = m_Player.FindAction("SelectInstrumentSouth", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
             m_Player_StartPause = m_Player.FindAction("StartPause", throwIfNotFound: true);
         }
 
@@ -181,17 +160,15 @@ namespace PlayerActions
         // Player
         private readonly InputActionMap m_Player;
         private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_SelectInstrumentNorth;
-        private readonly InputAction m_Player_SelectInstrumentSouth;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_Dash;
         private readonly InputAction m_Player_StartPause;
         public struct PlayerActions
         {
             private @BeatRootActions m_Wrapper;
             public PlayerActions(@BeatRootActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @SelectInstrumentNorth => m_Wrapper.m_Player_SelectInstrumentNorth;
-            public InputAction @SelectInstrumentSouth => m_Wrapper.m_Player_SelectInstrumentSouth;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @Dash => m_Wrapper.m_Player_Dash;
             public InputAction @StartPause => m_Wrapper.m_Player_StartPause;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
@@ -202,15 +179,12 @@ namespace PlayerActions
             {
                 if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
                 {
-                    @SelectInstrumentNorth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentNorth;
-                    @SelectInstrumentNorth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentNorth;
-                    @SelectInstrumentNorth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentNorth;
-                    @SelectInstrumentSouth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentSouth;
-                    @SelectInstrumentSouth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentSouth;
-                    @SelectInstrumentSouth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectInstrumentSouth;
                     @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                    @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                    @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                    @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                     @StartPause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPause;
                     @StartPause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPause;
                     @StartPause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartPause;
@@ -218,15 +192,12 @@ namespace PlayerActions
                 m_Wrapper.m_PlayerActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @SelectInstrumentNorth.started += instance.OnSelectInstrumentNorth;
-                    @SelectInstrumentNorth.performed += instance.OnSelectInstrumentNorth;
-                    @SelectInstrumentNorth.canceled += instance.OnSelectInstrumentNorth;
-                    @SelectInstrumentSouth.started += instance.OnSelectInstrumentSouth;
-                    @SelectInstrumentSouth.performed += instance.OnSelectInstrumentSouth;
-                    @SelectInstrumentSouth.canceled += instance.OnSelectInstrumentSouth;
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
+                    @Dash.started += instance.OnDash;
+                    @Dash.performed += instance.OnDash;
+                    @Dash.canceled += instance.OnDash;
                     @StartPause.started += instance.OnStartPause;
                     @StartPause.performed += instance.OnStartPause;
                     @StartPause.canceled += instance.OnStartPause;
@@ -236,9 +207,8 @@ namespace PlayerActions
         public PlayerActions @Player => new PlayerActions(this);
         public interface IPlayerActions
         {
-            void OnSelectInstrumentNorth(InputAction.CallbackContext context);
-            void OnSelectInstrumentSouth(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnDash(InputAction.CallbackContext context);
             void OnStartPause(InputAction.CallbackContext context);
         }
     }
