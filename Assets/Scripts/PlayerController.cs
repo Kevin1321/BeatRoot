@@ -5,16 +5,25 @@ namespace BeatRoot
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private float Speed = 1.0f;
-        [SerializeField] private float Gravity = 2.0f;
         [SerializeField] private SO_InputEvent Jump;
         [SerializeField] private SO_InputEvent Dash;
+
+   
+        [SerializeField] private float JumpForce = 10;
+        [SerializeField] private float Speed = 0;
+        [SerializeField] private float Gravity = -2;
+
+
+        public LayerMask GroundLayer;
+        private float groundCheckRadius = 0.2f;
+        private float groundCheckDistance = 0.1f;
 
         public bool isAlive = true;
 
         private bool isInJumpField = false;
         private bool isInDashField = false;
         private bool isGrounded = false;
+
 
         private void OnEnable()
         {
@@ -26,15 +35,21 @@ namespace BeatRoot
         {
             if (!isAlive) return;
 
-            Vector2 postion = transform.position;
-            postion += (new Vector2(Speed, 0) * Time.deltaTime);
+            Vector2 velocity = transform.position;
 
-            transform.position = postion;
+            velocity += new Vector2(Speed * Time.deltaTime, 0);
+
+            isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
+
+            if (!isGrounded) velocity += new Vector2(0, Gravity * Time.deltaTime);
+
+            transform.position = velocity;
         }
 
         private void OnDisable()
         {
-            Dash.ControllerButtonPressed -= OnJumpPressed;
+            Jump.ControllerButtonPressed -= OnJumpPressed;
+            Dash.ControllerButtonPressed -= OnDashPressed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -51,12 +66,18 @@ namespace BeatRoot
 
         private void OnJumpPressed()
         {
-            Debug.Log("Pressed");
+            if (!isInJumpField) return;
+            isGrounded = Physics2D.OverlapCircle(transform.position, groundCheckRadius, GroundLayer);
+            if (isGrounded)
+            {
+
+            }
         }
 
         private void OnDashPressed()
         {
-            Debug.Log("Pressed");
+            if(!isInDashField) return;
+
         }
     }
 }
