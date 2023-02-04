@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace BeatRoot
 {
-    public class JumpInstrument : MonoBehaviour
+    public class JumpInstrument : InteractableField
     {
+        
     }
 }
