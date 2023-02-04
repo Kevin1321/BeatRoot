@@ -6,6 +6,7 @@ namespace BeatRoot
 {
     public class InteractableField : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer SR;
         private bool hitOnSuccess;
         
         public void Use()
@@ -33,7 +34,7 @@ namespace BeatRoot
 
         private void DestroyOnMiss()
         {
-            GetComponent<SpriteRenderer>().color = Color.gray;
+            SR.color = Color.gray;
             transform.DOShakePosition(0.4f, new Vector3(0.1f, 0, 0)).OnComplete(() => Destroy(gameObject));
         }
     }
