@@ -186,9 +186,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jump: {fileID: 11400000, guid: 03bff19d76372914dafe849b1db71efe, type: 2}
   Dash: {fileID: 11400000, guid: c5a1e8c65f5ae3b45ac356ba5f19c1de, type: 2}
-  JumpForce: 5
-  Speed: 3
-  Gravity: 2
+  JumpForce: 6
+  Speed: 1
+  Gravity: -2
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
