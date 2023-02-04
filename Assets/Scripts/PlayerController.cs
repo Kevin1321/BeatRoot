@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+namespace BeatRoot
+{
+    public class PlayerController : MonoBehaviour
     {
-        
+        [SerializeField] private float Speed = 1.0f;
+
+        private void Update()
+        {
+            Vector2 postion = transform.position;
+            postion += new Vector2(Speed * Time.deltaTime, 0);
+            
+            transform.position = postion;
+        }
     }
 }
