@@ -37,11 +37,11 @@ namespace BeatRoot
 
             Vector2 velocity = transform.position;
 
-            velocity += new Vector2(Speed * Time.deltaTime, 0);
+            velocity.x += Speed * Time.deltaTime;
 
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
 
-            if (!isGrounded) velocity += new Vector2(0, Gravity * Time.deltaTime);
+            if (!isGrounded) velocity.y += Gravity * Time.deltaTime;
 
             transform.position = velocity;
         }
