@@ -191,11 +191,9 @@ namespace BeatRoot
         {
             finished = true;
             var initialSpeed = Speed;
-            DOVirtual.Float(1f, 0f, 1f, value =>
+            DOVirtual.Float(1f, 0f, 2f, value =>
             {
                 Speed = Mathf.Lerp(initialSpeed, 0f, value);
-                MusicPlayer.volume = value;
-                OverlayMusicPlayer.volume = value;
             }).SetEase(Ease.OutCirc).OnComplete(GoToFinish);
         }
 
