@@ -13,6 +13,7 @@ namespace BeatRoot
         {
             Vector3 position = BeatRoot.transform.position;
             position.x = position.x - offset;
+            position.y = position.y + 2;
             transform.position = position;
         }
 
@@ -24,8 +25,8 @@ namespace BeatRoot
 
         public void GetCloser()
         {
-            offset = offset - 1f;
-            if(!AS.isPlaying) AS.Play();
+            offset = offset - 4f;
+            AS.Play();
         }
     }
 }
