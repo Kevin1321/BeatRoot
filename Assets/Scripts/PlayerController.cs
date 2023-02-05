@@ -1,7 +1,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 namespace BeatRoot
 {
@@ -9,10 +9,10 @@ namespace BeatRoot
     {
         [SerializeField] private SO_InputEvent Jump;
         [SerializeField] private SO_InputEvent Dash;
+        [SerializeField] private SO_InputEvent Restart;
 
         [SerializeField] private Animator BeatRootAnimator;
-  
-   
+
         [SerializeField] private float JumpForce = 10;
         [SerializeField] private float Speed = 0;
         [SerializeField] private float Gravity = -3;
@@ -56,6 +56,7 @@ namespace BeatRoot
         {
             Jump.ControllerButtonPressed += OnJumpPressed;
             Dash.ControllerButtonPressed += OnDashPressed;
+            Restart.ControllerButtonPressed += OnRestartPressed;
         }
 
         private void Start()
@@ -131,6 +132,13 @@ namespace BeatRoot
             transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InBack).OnComplete(SetIsDashingToFalse);
         }
 
+        private void OnRestartPressed()
+        {
+            if (isAlive) return;
+
+            SceneManager.LoadScene("Level_1");
+        }
+
         private void SetIsDashingToFalse()
         {
             BeatRootAnimator.Play("A_Walk");
@@ -140,6 +148,11 @@ namespace BeatRoot
         public float GetXPosition()
         {
             return transform.position.x;
+        }
+
+        public void Dies()
+        {
+            isAlive = false;
         }
     }
 }

@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Jump: {fileID: 11400000, guid: 03bff19d76372914dafe849b1db71efe, type: 2}
   Dash: {fileID: 11400000, guid: c5a1e8c65f5ae3b45ac356ba5f19c1de, type: 2}
+  Restart: {fileID: 11400000, guid: f38640c31aa44bc4ba2b584479cf3ddd, type: 2}
   BeatRootAnimator: {fileID: 117090267}
   JumpForce: 6
   Speed: 3

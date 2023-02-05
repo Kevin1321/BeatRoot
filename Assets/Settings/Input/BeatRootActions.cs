@@ -72,7 +72,7 @@ namespace PlayerActions
                 {
                     ""name"": """",
                     ""id"": ""9f9dfbe2-c22d-4c57-909b-3d97725649db"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -84,6 +84,17 @@ namespace PlayerActions
                     ""name"": """",
                     ""id"": ""13b90b1c-8a05-4ca3-bfbc-2f1890dd99e3"",
                     ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01b585f0-9ca5-4a7f-bb49-d01ed5172601"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
