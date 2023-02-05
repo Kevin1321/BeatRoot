@@ -135,7 +135,6 @@ namespace BeatRoot
         private void OnRestartPressed()
         {
             if (isAlive) return;
-
             SceneManager.LoadScene("Level_1");
         }
 
