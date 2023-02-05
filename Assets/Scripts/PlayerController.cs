@@ -10,10 +10,8 @@ namespace BeatRoot
         [SerializeField] private SO_InputEvent Jump;
         [SerializeField] private SO_InputEvent Dash;
 
-        [SerializeField] private SpriteRenderer SR;
-        [SerializeField] private Sprite BaseSprite;
-        [SerializeField] private Sprite JumpSprite;
-        [SerializeField] private Sprite DashSprite;
+        [SerializeField] private Animator BeatRootAnimator;
+  
    
         [SerializeField] private float JumpForce = 10;
         [SerializeField] private float Speed = 0;
@@ -81,7 +79,8 @@ namespace BeatRoot
             isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
             
             verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
-            if (verticalSpeed == 0 && SR.sprite == JumpSprite) SR.sprite = BaseSprite; 
+            if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Keyboard") BeatRootAnimator.Play("A_Walk");
+
             newPosition.y += verticalSpeed * Time.deltaTime;
             newPosition.x += dashSpeed > 0 ? dashSpeed : Speed * Time.deltaTime;
             
@@ -120,7 +119,7 @@ namespace BeatRoot
         private void OnJumpPressed()
         {
             if (!isInJumpField) return;
-            SR.sprite = JumpSprite;
+            BeatRootAnimator.Play("A_Keyboard");
             interactableFieldInRange.Use();
             verticalSpeed = JumpForce;
         }
@@ -128,7 +127,7 @@ namespace BeatRoot
         private void OnDashPressed()
         {
             if(!isInDashField) return;
-            SR.sprite = DashSprite;
+            BeatRootAnimator.Play("A_Drums");
             interactableFieldInRange.Use();
             isDashing = true;
             transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InBack).OnComplete(SetIsDashingToFalse);
@@ -136,7 +135,7 @@ namespace BeatRoot
 
         private void SetIsDashingToFalse()
         {
-            SR.sprite = BaseSprite;
+            BeatRootAnimator.Play("A_Walk");
             isDashing = false;
         }
 
