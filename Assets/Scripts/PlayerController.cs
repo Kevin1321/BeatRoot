@@ -23,6 +23,7 @@ namespace BeatRoot
         [SerializeField] private AudioClip JumpSound;
         [SerializeField] private AudioClip DashSound;
 
+        [SerializeField] private ZombieHorde Zombies;
 
         public static PlayerController Instance;
         public LayerMask GroundLayer;
@@ -123,7 +124,11 @@ namespace BeatRoot
 
         private void OnJumpPressed()
         {
-            if (!isInJumpField) return;
+            if (!isInJumpField)
+            {
+                Zombies.GetCloser();
+                return;
+            }
             
             playerSounds.clip = JumpSound;
             playerSounds.Play();
@@ -134,7 +139,11 @@ namespace BeatRoot
 
         private void OnDashPressed()
         {
-            if(!isInDashField) return;
+            if (!isInDashField)
+            {
+                Zombies.GetCloser();
+                return;
+            }
 
             playerSounds.clip = DashSound;
             playerSounds.Play();
