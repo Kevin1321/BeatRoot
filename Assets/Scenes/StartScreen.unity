@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420035}
   - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
@@ -485,6 +486,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18cf40aaaf7c784284f0ab899839111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Restart: {fileID: 11400000, guid: f38640c31aa44bc4ba2b584479cf3ddd, type: 2}
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a3e7cea3d012b48bc975624537a42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Jump: {fileID: 11400000, guid: 03bff19d76372914dafe849b1db71efe, type: 2}
+  Dash: {fileID: 11400000, guid: c5a1e8c65f5ae3b45ac356ba5f19c1de, type: 2}
+  StartPause: {fileID: 11400000, guid: f38640c31aa44bc4ba2b584479cf3ddd, type: 2}
 --- !u!1 &983176561
 GameObject:
   m_ObjectHideFlags: 0
