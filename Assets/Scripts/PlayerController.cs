@@ -21,6 +21,7 @@ namespace BeatRoot
         [SerializeField] private float DashDuration;
         [SerializeField] private float DashDistance;
         [SerializeField] private AudioSource MusicPlayer;
+        [SerializeField] private AudioSource OverlayMusicPlayer;
 
 
         public static PlayerController Instance;
@@ -63,6 +64,7 @@ namespace BeatRoot
         private void Start()
         {
             MusicPlayer.Play();
+            OverlayMusicPlayer.Play();
         }
 
         private void Update()
