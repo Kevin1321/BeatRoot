@@ -20,6 +20,8 @@ namespace BeatRoot
         [SerializeField] private float DashDistance;
         [SerializeField] private AudioSource MusicPlayer;
         [SerializeField] private AudioSource OverlayMusicPlayer;
+        [SerializeField] private AudioClip JumpSound;
+        [SerializeField] private AudioClip DashSound;
 
 
         public static PlayerController Instance;
@@ -36,6 +38,7 @@ namespace BeatRoot
         private float dashSpeed;
         private bool isDashing;
         private InteractableField interactableFieldInRange;
+        private AudioSource playerSounds;
 
 
         private Vector2 newPosition;
@@ -64,6 +67,7 @@ namespace BeatRoot
         {
             MusicPlayer.Play();
             OverlayMusicPlayer.Play();
+            playerSounds = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -120,6 +124,9 @@ namespace BeatRoot
         private void OnJumpPressed()
         {
             if (!isInJumpField) return;
+            
+            playerSounds.clip = JumpSound;
+            playerSounds.Play();
             BeatRootAnimator.Play("A_Keyboard");
             interactableFieldInRange.Use();
             verticalSpeed = JumpForce;
@@ -128,6 +135,9 @@ namespace BeatRoot
         private void OnDashPressed()
         {
             if(!isInDashField) return;
+
+            playerSounds.clip = DashSound;
+            playerSounds.Play();
             BeatRootAnimator.Play("A_Drums");
             interactableFieldInRange.Use();
             isDashing = true;
