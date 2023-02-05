@@ -22,6 +22,7 @@ namespace BeatRoot
         [SerializeField] private AudioSource OverlayMusicPlayer;
         [SerializeField] private AudioClip JumpSound;
         [SerializeField] private AudioClip DashSound;
+        [SerializeField] private GameObject FinishScreen;
 
         [SerializeField] private ZombieHorde Zombies;
 
@@ -35,6 +36,7 @@ namespace BeatRoot
         private float verticalSpeed;
         private bool isInJumpField = false;
         private bool isInDashField = false;
+        private bool finished = false;
         private bool isGrounded = true;
         private float dashSpeed;
         private bool isDashing;
@@ -78,16 +80,20 @@ namespace BeatRoot
             if (!isAlive) return;
             
             if (isDashing) return;
-            
+
             newPosition = transform.position;
 
 
-            isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
+            if (!finished)
+            {
+                isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
             
-            verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
-            if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Keyboard") BeatRootAnimator.Play("A_Walk");
+                verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
+                if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Keyboard") BeatRootAnimator.Play("A_Walk");
 
-            newPosition.y += verticalSpeed * Time.deltaTime;
+                newPosition.y += verticalSpeed * Time.deltaTime;   
+            }
+            
             newPosition.x += dashSpeed > 0 ? dashSpeed : Speed * Time.deltaTime;
             
             transform.position = newPosition;
@@ -120,10 +126,13 @@ namespace BeatRoot
         {
             if (collision.GetComponent<JumpInstrument>() != null) isInJumpField = false;
             if (collision.GetComponent<DashInstrument>() != null) isInDashField = false;
+            if (collision.GetComponent<Goal>() != null) Finish();
         }
 
         private void OnJumpPressed()
         {
+            if(finished) return;
+            
             if (!isInJumpField)
             {
                 Zombies.GetCloser();
@@ -139,6 +148,8 @@ namespace BeatRoot
 
         private void OnDashPressed()
         {
+            if(finished) return;
+            
             if (!isInDashField)
             {
                 Zombies.GetCloser();
@@ -174,6 +185,25 @@ namespace BeatRoot
         {
             isAlive = false;
             BeatRootAnimator.Play("A_Dead");
+        }
+
+        private void Finish()
+        {
+            finished = true;
+            var initialSpeed = Speed;
+            DOVirtual.Float(1f, 0f, 1f, value =>
+            {
+                Speed = Mathf.Lerp(initialSpeed, 0f, value);
+                MusicPlayer.volume = value;
+                OverlayMusicPlayer.volume = value;
+            }).SetEase(Ease.OutCirc).OnComplete(GoToFinish);
+        }
+
+        private void GoToFinish()
+        {
+            MusicPlayer.enabled = false;
+            OverlayMusicPlayer.enabled = false;
+            FinishScreen.SetActive(true);
         }
     }
 }
