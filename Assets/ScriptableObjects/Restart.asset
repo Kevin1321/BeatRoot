@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c72c6425296acc4c8ef873cfac3a480, type: 3}
-  m_Name: StartPause
+  m_Name: Restart
   m_EditorClassIdentifier: 
