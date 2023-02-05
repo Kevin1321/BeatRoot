@@ -154,6 +154,7 @@ namespace BeatRoot
         public void Dies()
         {
             isAlive = false;
+            BeatRootAnimator.Play("A_Dead");
         }
     }
 }
