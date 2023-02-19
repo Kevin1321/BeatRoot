@@ -161,7 +161,7 @@ namespace BeatRoot
             BeatRootAnimator.Play("A_Drums");
             interactableFieldInRange.Use();
             isDashing = true;
-            transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InBack).OnComplete(SetIsDashingToFalse);
+            transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InQuint).OnComplete(SetIsDashingToFalse);
         }
 
         private void OnRestartPressed()
