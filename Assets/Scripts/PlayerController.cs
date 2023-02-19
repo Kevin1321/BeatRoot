@@ -123,13 +123,13 @@ namespace BeatRoot
                 isInDashField = true;
                 interactableFieldInRange = dashInstrument;
             }
+            if (collision.GetComponent<Goal>() != null) Finish();
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.GetComponent<JumpInstrument>() != null) isInJumpField = false;
             if (collision.GetComponent<DashInstrument>() != null) isInDashField = false;
-            if (collision.GetComponent<Goal>() != null) Finish();
         }
 
         private void OnJumpPressed()
