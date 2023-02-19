@@ -2235,14 +2235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3805920119544383953, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
-      propertyPath: m_Size.x
-      value: 4.858963
-      objectReference: {fileID: 0}
-    - target: {fileID: 3805920119544383953, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
-      propertyPath: m_Offset.x
-      value: -2.7466354
-      objectReference: {fileID: 0}
     - target: {fileID: 7423293200683775312, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
       propertyPath: m_Name
       value: Goal
@@ -2253,11 +2245,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7423293200683775318, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 214.1
+      value: 220.51
       objectReference: {fileID: 0}
     - target: {fileID: 7423293200683775318, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.242
+      value: 20.5
       objectReference: {fileID: 0}
     - target: {fileID: 7423293200683775318, guid: 79cb13f7732880b4bbfb73ddeaf85bf2, type: 3}
       propertyPath: m_LocalPosition.z
