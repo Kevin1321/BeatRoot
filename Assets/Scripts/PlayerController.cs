@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using TMPro;
@@ -28,6 +29,7 @@ namespace BeatRoot
         [SerializeField] private ZombieHorde Zombies;
 
         public static PlayerController Instance;
+        public static Action OnPlayerFalling;
         public LayerMask GroundLayer;
         private float groundCheckDistance = 0.01f;
 
@@ -190,18 +192,21 @@ namespace BeatRoot
         public void Fall()
         {
             Die();
-            transform.Rotate(new Vector3(0, 0, -90));
+            transform.Rotate(new Vector3(0, 0, 90));
+            OnPlayerFalling?.Invoke();
             StartCoroutine(Falling());
         }
 
         private IEnumerator Falling()
         {
-            var fallSpeed = 0.2f;
-            var fallVector = new Vector3(0, 1, 0) * fallSpeed;
+            var fallSpeed = 1f;
+            var fallVelocity = 0f;
+            var fallVector = new Vector3(0, 1, 0);
             var timer = 2f;
             while (timer > 0)
             {
-                transform.position -= fallVector * Time.deltaTime;
+                fallSpeed += fallVelocity * Time.deltaTime;
+                transform.position -= fallVector * fallSpeed * Time.deltaTime;
                 yield return waitForFrame;
                 timer -= Time.deltaTime;
             }
