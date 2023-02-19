@@ -8,7 +8,7 @@ namespace BeatRoot
         private void OnTriggerEnter2D(Collider2D collision)
         {
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
-            if (pc != null) pc.Dies();
+            if (pc != null) pc.Fall();
         }
     }
 }

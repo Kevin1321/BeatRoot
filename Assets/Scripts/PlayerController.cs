@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,6 +42,7 @@ namespace BeatRoot
         private bool isGrounded = true;
         private float dashSpeed;
         private bool isDashing;
+        private WaitForEndOfFrame waitForFrame;
         private InteractableField interactableFieldInRange;
         private AudioSource playerSounds;
 
@@ -131,7 +134,7 @@ namespace BeatRoot
 
         private void OnJumpPressed()
         {
-            if(finished) return;
+            if(finished || !isAlive) return;
             
             if (!isInJumpField)
             {
@@ -148,7 +151,7 @@ namespace BeatRoot
 
         private void OnDashPressed()
         {
-            if(finished) return;
+            if(finished || !isAlive) return;
             
             if (!isInDashField)
             {
@@ -181,7 +184,32 @@ namespace BeatRoot
             return transform.position.x;
         }
 
-        public void Dies()
+        public void GetEaten()
+        {
+            Die();
+        }
+
+        public void Fall()
+        {
+            Die();
+            transform.Rotate(new Vector3(0, 0, -90));
+            StartCoroutine(Falling());
+        }
+
+        private IEnumerator Falling()
+        {
+            var fallSpeed = 0.2f;
+            var fallVector = new Vector3(0, 1, 0) * fallSpeed;
+            var timer = 2f;
+            while (timer > 0)
+            {
+                transform.position -= fallVector * Time.deltaTime;
+                yield return waitForFrame;
+                timer -= Time.deltaTime;
+            }
+        }
+
+        private void Die()
         {
             isAlive = false;
             BeatRootAnimator.Play("A_Dead");
