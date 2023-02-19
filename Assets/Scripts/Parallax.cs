@@ -12,10 +12,10 @@ namespace BeatRoot
         public GameObject Camera;
         public float parallaxEffect;
 
-        private void Awake()
+        private void Start()
         {
-            length = GetComponent<SpriteRenderer>().bounds.size.x;
             startpos = transform.position.x;
+            length = GetComponent<SpriteRenderer>().bounds.size.x;
         }
 
         private void LateUpdate()

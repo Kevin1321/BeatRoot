@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -30,7 +28,6 @@ namespace BeatRoot
 
         public static PlayerController Instance;
         public LayerMask GroundLayer;
-        private float groundCheckRadius = 0.2f;
         private float groundCheckDistance = 0.01f;
 
         public bool isAlive = true;
@@ -92,9 +89,9 @@ namespace BeatRoot
                 isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
             
                 verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
-                if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Keyboard") BeatRootAnimator.Play("A_Walk");
-
-                newPosition.y += verticalSpeed * Time.deltaTime;   
+                if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Down") BeatRootAnimator.Play("A_Walk");
+                if(verticalSpeed < 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Up") BeatRootAnimator.Play("A_Jump_Down");
+                newPosition.y += verticalSpeed * Time.deltaTime;
             }
             
             newPosition.x += dashSpeed > 0 ? dashSpeed : Speed * Time.deltaTime;
@@ -144,7 +141,7 @@ namespace BeatRoot
             
             playerSounds.clip = JumpSound;
             playerSounds.Play();
-            BeatRootAnimator.Play("A_Keyboard");
+            BeatRootAnimator.Play("A_Jump_Up");
             interactableFieldInRange.Use();
             verticalSpeed = JumpForce;
         }
@@ -161,7 +158,7 @@ namespace BeatRoot
 
             playerSounds.clip = DashSound;
             playerSounds.Play();
-            BeatRootAnimator.Play("A_Drums");
+            BeatRootAnimator.Play("A_Dash");
             interactableFieldInRange.Use();
             isDashing = true;
             transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InQuint).OnComplete(SetIsDashingToFalse);

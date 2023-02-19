@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 15
-  m_Sprite: {fileID: -2041129103, guid: e219db57fbc2fc14697bc696f4963928, type: 3}
+  m_Sprite: {fileID: 895561786, guid: 453f0d3d6b8507742a26383dbc2283ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.3, y: 2.45}
+  m_Size: {x: 2.29, y: 2.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -251,6 +251,7 @@ MonoBehaviour:
   OverlayMusicPlayer: {fileID: 0}
   JumpSound: {fileID: 8300000, guid: b9c03cd6dbcffc34a92863c9e88fb2c1, type: 3}
   DashSound: {fileID: 8300000, guid: 7b388b05f86aa4b47a83062587b970be, type: 3}
+  FinishScreen: {fileID: 0}
   Zombies: {fileID: 0}
   GroundLayer:
     serializedVersion: 2

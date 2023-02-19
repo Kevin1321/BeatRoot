@@ -478,6 +478,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &335312746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 117090266, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
+  m_PrefabInstance: {fileID: 8396628706526343193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &494519579
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,11 +559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494519579}
   m_CullTransparentMesh: 1
---- !u!1 &519420028 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8766543294113344075, guid: 43abc1ef5ed211a41adde784e6255304, type: 3}
-  m_PrefabInstance: {fileID: 8766543294340583991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &578262046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1290,15 @@ PrefabInstance:
     - target: {fileID: 1612329685970283265, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
       propertyPath: Camera
       value: 
-      objectReference: {fileID: 519420028}
+      objectReference: {fileID: 335312746}
+    - target: {fileID: 1612329685970283265, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
+      propertyPath: distanceX
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612329685970283265, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1612329686083534019, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1342,11 +1350,19 @@ PrefabInstance:
     - target: {fileID: 1612329686735498653, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
       propertyPath: Camera
       value: 
-      objectReference: {fileID: 519420028}
+      objectReference: {fileID: 335312746}
     - target: {fileID: 1612329687147103790, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
       propertyPath: Camera
       value: 
-      objectReference: {fileID: 519420028}
+      objectReference: {fileID: 335312746}
+    - target: {fileID: 1612329687147103790, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
+      propertyPath: distanceX
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612329687147103790, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
+      propertyPath: parallaxEffect
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7574e53583c52a846a443f00f0589e85, type: 3}
 --- !u!1 &1627827609
@@ -1439,6 +1455,10 @@ PrefabInstance:
     - target: {fileID: 3610094424062860089, guid: 38f3e8f0ca3714845ab887796e4ab61b, type: 3}
       propertyPath: m_Name
       value: ZombieHorde
+      objectReference: {fileID: 0}
+    - target: {fileID: 3610094424062860089, guid: 38f3e8f0ca3714845ab887796e4ab61b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3610094424062860091, guid: 38f3e8f0ca3714845ab887796e4ab61b, type: 3}
       propertyPath: m_RootOrder
@@ -1839,7 +1859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1616032849804906706, guid: 556193bf8a0867345a59a11c3bf4b26f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1616032849804906706, guid: 556193bf8a0867345a59a11c3bf4b26f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1954,6 +1974,10 @@ PrefabInstance:
     - target: {fileID: 3856903159141584392, guid: c8ccfcf575190344ca55c92769005a2b, type: 3}
       propertyPath: m_Name
       value: DeadZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856903159141584392, guid: c8ccfcf575190344ca55c92769005a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3856903159141584396, guid: c8ccfcf575190344ca55c92769005a2b, type: 3}
       propertyPath: m_RootOrder
@@ -2133,6 +2157,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grounds
       objectReference: {fileID: 0}
+    - target: {fileID: 8167284010599922575, guid: 8553257a211c5574bb1c87cc40cf87c7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8553257a211c5574bb1c87cc40cf87c7, type: 3}
 --- !u!1001 &8396628706526343193
@@ -2172,7 +2200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396628705794059531, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8396628705794059531, guid: b52357b8084353b46ac615ddf83d1907, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2258,7 +2286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8766543294113344183, guid: 43abc1ef5ed211a41adde784e6255304, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8766543294113344183, guid: 43abc1ef5ed211a41adde784e6255304, type: 3}
       propertyPath: m_LocalPosition.y
