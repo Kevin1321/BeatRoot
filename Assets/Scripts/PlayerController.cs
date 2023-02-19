@@ -199,13 +199,13 @@ namespace BeatRoot
 
         private IEnumerator Falling()
         {
-            var fallSpeed = 1f;
-            var fallVelocity = 0f;
+            var fallSpeed = 1.5f;
+            var fallVelocity = 1f;
             var fallVector = new Vector3(0, 1, 0);
             var timer = 2f;
             while (timer > 0)
             {
-                fallSpeed += fallVelocity * Time.deltaTime;
+                fallSpeed += Mathf.Min(fallVelocity * Time.deltaTime, 3f);
                 transform.position -= fallVector * fallSpeed * Time.deltaTime;
                 yield return waitForFrame;
                 timer -= Time.deltaTime;
