@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 453f0d3d6b8507742a26383dbc2283ce
+guid: 8dd264508d652874b8fb2f82824bc410
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,169 +141,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk_SpriteSheet_New_0
+      name: Jump_SpriteSheet_NewV2_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 316
+        x: 6
+        y: 730
+        width: 233
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2b9a15fd944444cbee5742059ef7de
+      internalID: -1529516448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_SpriteSheet_NewV2_5
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 737
+        width: 218
+        height: 262
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1831df26d48460e43a547e7dacc811b3
+      internalID: 1944388557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jump_SpriteSheet_NewV2_7
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 747
         width: 229
-        height: 245
+        height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abb773e391e0fa44f9d2df1ca806a0db
-      internalID: 895561786
+      spriteID: 1d62c961dded5c74daf68eafe8a6ad2c
+      internalID: 77136263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_SpriteSheet_New_1
+      name: Jump_SpriteSheet_NewV2_10
       rect:
         serializedVersion: 2
-        x: 318
-        y: 319
-        width: 229
-        height: 241
+        x: 644
+        y: 432
+        width: 236
+        height: 249
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f58ac8002e13ea14dadf57cb2d245cc5
-      internalID: -416434878
+      spriteID: 2d848de1b7dde7b4999efd8cb5bf6f65
+      internalID: 741998319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_SpriteSheet_New_2
+      name: Jump_SpriteSheet_NewV2_11
       rect:
         serializedVersion: 2
-        x: 608
-        y: 316
-        width: 229
-        height: 245
+        x: 958
+        y: 440
+        width: 241
+        height: 243
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c6aa8bf67a2f4e4592cbc3631dbd966
-      internalID: 1421325627
+      spriteID: 5d997bf39db978e4daaefd57d5348b78
+      internalID: -1600703396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_SpriteSheet_New_3
+      name: Jump_SpriteSheet_NewV2_14
       rect:
         serializedVersion: 2
-        x: 928
-        y: 312
-        width: 229
-        height: 242
+        x: 1900
+        y: 425
+        width: 227
+        height: 246
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89b58bb3a3b04004885569838cf5e8b7
-      internalID: 258514210
+      spriteID: eb8523d63bcf1534bbf2d05eb11fffda
+      internalID: -482704583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_SpriteSheet_New_4
+      name: Jump_SpriteSheet_NewV2_16
       rect:
         serializedVersion: 2
-        x: 23
-        y: 42
-        width: 230
-        height: 244
+        x: 358
+        y: 128
+        width: 233
+        height: 255
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b003553857c55fe40ad8bd8d09ab97b7
-      internalID: 297638906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_SpriteSheet_New_5
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 48
-        width: 230
-        height: 244
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 050bdde7df5d01549a384a7ea6f420ef
-      internalID: 2078921674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_SpriteSheet_New_6
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 42
-        width: 230
-        height: 250
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc287b14cbd9eb84b98b7cfd65faa61c
-      internalID: -2002444278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_SpriteSheet_New_7
-      rect:
-        serializedVersion: 2
-        x: 933
-        y: 36
-        width: 230
-        height: 248
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdee2c7c1ae9c5046ac3b1311e910674
-      internalID: 699115617
+      spriteID: 961dcda3fb7dead4cbd66248f45e0442
+      internalID: -2125037559
       vertices: []
       indices: 
       edges: []
@@ -319,14 +298,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk_SpriteSheet_New_6: -2002444278
-      Walk_SpriteSheet_New_7: 699115617
-      Walk_SpriteSheet_New_3: 258514210
-      Walk_SpriteSheet_New_0: 895561786
-      Walk_SpriteSheet_New_5: 2078921674
-      Walk_SpriteSheet_New_1: -416434878
-      Walk_SpriteSheet_New_2: 1421325627
-      Walk_SpriteSheet_New_4: 297638906
+      Jump_SpriteSheet_NewV2_5: 1944388557
+      Jump_SpriteSheet_NewV2_16: -2125037559
+      Jump_SpriteSheet_NewV2_4: 1806305732
+      Jump_SpriteSheet_NewV2_14: -482704583
+      Jump_SpriteSheet_NewV2_8: 508811032
+      Jump_SpriteSheet_NewV2_17: 113749670
+      Jump_SpriteSheet_NewV2_15: 737850203
+      Jump_SpriteSheet_NewV2_18: -1661661755
+      Jump_SpriteSheet_NewV2_3: -1248276345
+      Jump_SpriteSheet_NewV2_7: 77136263
+      Jump_SpriteSheet_NewV2_1: 1678681344
+      Jump_SpriteSheet_NewV2_10: 741998319
+      Jump_SpriteSheet_NewV2_11: -1600703396
+      Jump_SpriteSheet_NewV2_0: -1529516448
+      Jump_SpriteSheet_NewV2_2: -1068969620
+      Jump_SpriteSheet_NewV2_13: -1880531765
+      Jump_SpriteSheet_NewV2_9: 1174321364
+      Jump_SpriteSheet_NewV2_12: 954343840
+      Jump_SpriteSheet_NewV2_6: 918842006
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
