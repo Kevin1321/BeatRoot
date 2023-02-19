@@ -25,6 +25,7 @@ namespace BeatRoot
         [SerializeField] private AudioClip JumpSound;
         [SerializeField] private AudioClip DashSound;
         [SerializeField] private GameObject FinishScreen;
+        [SerializeField] private LooseScreen LooseScreen;
 
         [SerializeField] private ZombieHorde Zombies;
 
@@ -78,10 +79,10 @@ namespace BeatRoot
 
         private void Update()
         {
-            if(!MusicPlayer.isPlaying) return;
-            
+            if (!MusicPlayer.isPlaying) return;
+
             if (!isAlive) return;
-            
+
             if (isDashing) return;
 
             newPosition = transform.position;
@@ -90,15 +91,17 @@ namespace BeatRoot
             if (!finished)
             {
                 isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, GroundLayer);
-            
+
                 verticalSpeed = isGrounded ? Mathf.Max(verticalSpeed, 0) : verticalSpeed + Gravity * Time.deltaTime;
-                if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Down") BeatRootAnimator.Play("A_Walk");
-                if(verticalSpeed < 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Up") BeatRootAnimator.Play("A_Jump_Down");
+                if (verticalSpeed == 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Down")
+                    BeatRootAnimator.Play("A_Walk");
+                if (verticalSpeed < 0 && BeatRootAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Jump_Up")
+                    BeatRootAnimator.Play("A_Jump_Down");
                 newPosition.y += verticalSpeed * Time.deltaTime;
             }
-            
+
             newPosition.x += dashSpeed > 0 ? dashSpeed : Speed * Time.deltaTime;
-            
+
             transform.position = newPosition;
         }
 
@@ -106,6 +109,7 @@ namespace BeatRoot
         {
             Jump.ControllerButtonPressed -= OnJumpPressed;
             Dash.ControllerButtonPressed -= OnDashPressed;
+            Restart.ControllerButtonPressed -= OnRestartPressed;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -123,6 +127,7 @@ namespace BeatRoot
                 isInDashField = true;
                 interactableFieldInRange = dashInstrument;
             }
+
             if (collision.GetComponent<Goal>() != null) Finish();
         }
 
@@ -134,14 +139,14 @@ namespace BeatRoot
 
         private void OnJumpPressed()
         {
-            if(finished || !isAlive) return;
-            
+            if (finished || !isAlive) return;
+
             if (!isInJumpField)
             {
                 Zombies.GetCloser();
                 return;
             }
-            
+
             playerSounds.clip = JumpSound;
             playerSounds.Play();
             BeatRootAnimator.Play("A_Jump_Up");
@@ -151,8 +156,8 @@ namespace BeatRoot
 
         private void OnDashPressed()
         {
-            if(finished || !isAlive) return;
-            
+            if (finished || !isAlive) return;
+
             if (!isInDashField)
             {
                 Zombies.GetCloser();
@@ -164,7 +169,8 @@ namespace BeatRoot
             BeatRootAnimator.Play("A_Dash");
             interactableFieldInRange.Use();
             isDashing = true;
-            transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InQuint).OnComplete(SetIsDashingToFalse);
+            transform.DOMoveX(transform.position.x + DashDistance, DashDuration).SetEase(Ease.InQuint)
+                .OnComplete(SetIsDashingToFalse);
         }
 
         private void OnRestartPressed()
@@ -216,16 +222,17 @@ namespace BeatRoot
         {
             isAlive = false;
             BeatRootAnimator.Play("A_Dead");
+            OverlayMusicPlayer.DOFade(0f, 0.3f);
+            MusicPlayer.DOFade(0.7f, 0.3f);
+            LooseScreen.FadeIn();
         }
 
         private void Finish()
         {
             finished = true;
             var initialSpeed = Speed;
-            DOVirtual.Float(1f, 0f, 2f, value =>
-            {
-                Speed = Mathf.Lerp(initialSpeed, 0f, value);
-            }).SetEase(Ease.OutCirc).OnComplete(GoToFinish);
+            DOVirtual.Float(1f, 0f, 2f, value => { Speed = Mathf.Lerp(initialSpeed, 0f, value); }).SetEase(Ease.OutCirc)
+                .OnComplete(GoToFinish);
         }
 
         private void GoToFinish()

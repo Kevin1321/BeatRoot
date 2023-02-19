@@ -6,7 +6,8 @@ namespace BeatRoot
 {
     public class ZombieHorde : MonoBehaviour
     {
-        [SerializeField] private AudioSource AS;
+        [SerializeField] private AudioSource Growl;
+        [SerializeField] private AudioSource Mampf;
         [SerializeField] private Transform BeatRoot;
         [SerializeField] private float offset;
 
@@ -35,13 +36,17 @@ namespace BeatRoot
         private void OnTriggerEnter2D(Collider2D collision)
         {
             PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
-            if (pc != null) pc.GetEaten();
+            if (pc != null)
+            {
+                pc.GetEaten();
+                Mampf.Play();
+            }
         }
 
         public void GetCloser()
         {
             offset = offset - 4f;
-            AS.Play();
+            Growl.Play();
         }
 
         private void StopFollowing()
